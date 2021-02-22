@@ -3,6 +3,8 @@ package pages;
 import java.util.Random;
 
 public class PetInfo {
+	
+	private static PetInfo info = new PetInfo();
 
 	public int id;
 	public String name;
@@ -11,7 +13,7 @@ public class PetInfo {
 	public Info tags[] = { new Info()};
 
 
-	public PetInfo() {
+	private PetInfo() {
 		Random r = new Random();
 		
 		id = r.nextInt(100);
@@ -25,5 +27,13 @@ public class PetInfo {
 		
 	}
 	
+	public static PetInfo getInfo() {
+		if(info == null){
+			info = new PetInfo();
+        }
+
+        return info;
+	}
+
 	}
 	

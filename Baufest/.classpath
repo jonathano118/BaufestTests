@@ -42,5 +42,6 @@
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/selenium-server-standalone-3.9.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/rest-assured-4.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Downloads/json-schema-validator-4.3.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
