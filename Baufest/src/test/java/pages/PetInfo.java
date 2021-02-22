@@ -17,7 +17,7 @@ public class PetInfo {
 		Random r = new Random();
 		
 		id = r.nextInt(100);
-		System.out.println(id);
+		System.out.println("ID generado: "+id);
 		name = "Cheems";
 		category.id = id;
 		category.name = "Shiba Inu";
