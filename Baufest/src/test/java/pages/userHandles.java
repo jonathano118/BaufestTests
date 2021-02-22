@@ -29,11 +29,11 @@ public class userHandles {
 			Thread.sleep(2000);
 	}
 		
-		public void Logout() throws InterruptedException {
-			Thread.sleep(2000);
-			driver.findElement(By.id("logout2")).click();
+		public void LogoutCheck() {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Sign up")));
 			boolean a = driver.findElement(By.linkText("Sign up")).isDisplayed();
 			Assert.assertTrue(a);
+			
 		}
 		
 		public void Filter() {

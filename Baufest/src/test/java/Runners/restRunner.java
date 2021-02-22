@@ -6,9 +6,9 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="src/test/resources/features/WebPage.feature", glue = {"stepsDefinition"})
+@CucumberOptions(features="src/test/resources/features/WebService.feature", glue = {"restStepsDefinition"})
 
-public class Runner {
-
+public class restRunner {
+	
 
 }

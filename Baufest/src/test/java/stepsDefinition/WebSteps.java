@@ -13,7 +13,7 @@ import pages.userSingleton;
 import pages.driverSingleton;
 import pages.userHandles;
 
-public class steps {
+public class WebSteps {
 	
 	
 	private userSingleton userC = userSingleton.getUser(); 
@@ -27,9 +27,9 @@ public class steps {
 	private String laptop;
 		
 	
+	//Sign up
 	@Given("^a new user opening the webpage$")
 	public void a_new_user_opening_the_webpage() throws Throwable {
-		
 		driver.get(URL);
 	}
 	
@@ -50,7 +50,7 @@ public class steps {
 
 	
 	
-
+	//Log in
 	@Given("^a registered user that is not logged in$") 
 	 public void a_registered_user_that_is_not_logged_in() {
 		Assert.assertTrue(driver.findElement(By.id("login2")).isDisplayed());
@@ -71,7 +71,7 @@ public class steps {
 	
 	
 
-		
+	//Add an item to the cart
 	@Given("^a registered user searching for laptops$")
 	public void a_registered_user_searching_for_laptops() {
 		
@@ -93,5 +93,24 @@ public class steps {
 	}
 	
 	
+	//Log out
+	@Given ("^a logged in user$")
+	public void a_logged_in_user() {
+		Assert.assertTrue(driver.findElement(By.id("logout2")).isDisplayed());
+	}
+	
+	
+	@When ("^I click on log out button$")
+	public void I_click_on_log_out_button() {
+		
+		driver.findElement(By.id("logout2")).click();
+	}
+	
+	
+	@Then ("^I should succesfully log out from page$")
+	public void I_should_succesfully_log_out_from_page() {
+		userHandles.LogoutCheck();
+		driver.close();
+	}
 	
 }

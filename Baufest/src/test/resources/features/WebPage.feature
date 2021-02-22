@@ -16,3 +16,8 @@ Scenario: add a new laptop
 Given a registered user searching for laptops
 When I add a new one to the cart
 Then I should see it on the cart page
+
+Scenario: Log out from page
+Given a logged in user
+When I click on log out button
+Then I should succesfully log out from page
