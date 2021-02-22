@@ -18,8 +18,8 @@ import pages.PetInfo;
 
 public class RestSteps {
 	
-	PetInfo petInfo = PetInfo.getInfo();
-	Gson gson = new GsonBuilder().create();
+	PetInfo petInfo = PetInfo.getInfo(); // Clase generadora de los valores a enviar
+	Gson gson = new GsonBuilder().create(); //Objeto de tipo GSON para enviar como JSON
 	String json;
 	RequestSpecification request;
 	Response response;
@@ -30,7 +30,7 @@ public class RestSteps {
 	@Given ("^a new pet$")
 	public void a_new_pet() throws Throwable {
 		RestAssured.baseURI = "https://petstore.swagger.io/";
-		json = gson.toJson(petInfo);
+		json = gson.toJson(petInfo); //String que toma los valores convertidos de petInfo a JSON por medio del GSON 
 		request = RestAssured.given();
 	}
 	
@@ -49,7 +49,7 @@ public class RestSteps {
 		response
         .then()
         .assertThat()
-        .body(matchesJsonSchemaInClasspath("SwaggerSchema.json"));
+        .body(matchesJsonSchemaInClasspath("SwaggerSchema.json")); //Valida el schema
 	}
 
 	
@@ -66,7 +66,7 @@ public class RestSteps {
 	public void I_ask_for_an_existing_pet() throws Throwable {
 		petID = petInfo.id;
 		request.header("Content-Type", "application/json");
-		response = request.get("/"+petID);
+		response = request.get("/"+petID); //Realiza un GET del registro hecho en el POST
 		
 	}
 	
@@ -83,8 +83,8 @@ public class RestSteps {
 	
 	// PUT
 	
-	@Given ("^a known server of pets$")
-	public void a_known_server_of_pets() throws Throwable {
+	@Given ("^a pet on the server$")
+	public void a_pet_on_the_server() throws Throwable {
 		RestAssured.baseURI = "https://petstore.swagger.io/";
 		request = RestAssured.given();
 		
@@ -92,7 +92,7 @@ public class RestSteps {
 	
 	@When ("^I try to edit it$")
 	public void I_try_to_edit_it() throws Throwable {
-		petInfo.name = "Doge";
+		petInfo.name = "Doge"; //Modifica el valor del argumento "name" del registro hecho en el POST 
 		json = gson.toJson(petInfo);
 		request.header("Content-Type", "application/json");
 		request.body(json);
@@ -100,8 +100,8 @@ public class RestSteps {
 		
 	}
 	
-	@Then ("^I should succesfully change it$")
-	public void I_should_succesfully_change_it() throws Throwable {
+	@Then ("^I should succesfully modify it$")
+	public void I_should_succesfully_modify_it() throws Throwable {
 		int status = response.getStatusCode();
 		Assert.assertEquals(200, status);
 		response

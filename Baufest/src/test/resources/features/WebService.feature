@@ -11,6 +11,6 @@ When I ask for an existing pet
 Then I should succesfully get it
 
 Scenario: PUT on an existing pet
-Given a known server of pets
+Given a pet on the server
 When I try to edit it
-Then I should succesfully change it
+Then I should succesfully modify it

@@ -16,10 +16,10 @@ import pages.userHandles;
 public class WebSteps {
 	
 	
-	private userSingleton userC = userSingleton.getUser(); 
-	private driverSingleton driverS = driverSingleton.getDriver();
+	private userSingleton userC = userSingleton.getUser(); //Clase generadora de un usuario random
+	private driverSingleton driverS = driverSingleton.getDriver(); //Clase que establece las propiedades del driver
 	
-	WebDriver driver = driverS.driver;
+	WebDriver driver = driverS.driver; //Toma el valor del driver de la clase driverSingleton
 	
 	private userHandles userHandles = new userHandles(driver);
 	
@@ -36,7 +36,7 @@ public class WebSteps {
 
 	@When("^I try to register with a username and a password$")
 	public void i_try_to_register_with_a_username_and_a_password() throws Throwable {
-		userHandles.userData(userC.username, userC.passw, "Sign up", "signIn", "sign-");
+		userHandles.userData(userC.username, userC.passw, "Sign up", "signIn", "sign-"); //Manda por parametros los valores en CSS de los elementos
 	}
 
 	
@@ -44,7 +44,7 @@ public class WebSteps {
 	public void i_should_succesfully_signup() throws Throwable {
 
 		Alert alert = driver.switchTo().alert();
-		Assert.assertEquals(alert.getText(), "Sign up successful.");
+		Assert.assertEquals(alert.getText(), "Sign up successful."); //Confirma que se inicia sesion con exito
 		alert.accept();
 	}
 
@@ -59,7 +59,7 @@ public class WebSteps {
 	
 	@When("^I enter the username and a password$")
 	public void I_enter_the_username_and_password() throws InterruptedException{
-		userHandles.userData(userC.username, userC.passw, "Log in", "logIn", "login");
+		userHandles.userData(userC.username, userC.passw, "Log in", "logIn", "login"); //Manda por parametros los valores en CSS de los elementos
 	}
 	
 	
@@ -96,7 +96,7 @@ public class WebSteps {
 	//Log out
 	@Given ("^a logged in user$")
 	public void a_logged_in_user() {
-		Assert.assertTrue(driver.findElement(By.id("logout2")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.id("logout2")).isDisplayed()); //Valida que el usuario esté loggeado
 	}
 	
 	
@@ -109,7 +109,7 @@ public class WebSteps {
 	
 	@Then ("^I should succesfully log out from page$")
 	public void I_should_succesfully_log_out_from_page() {
-		userHandles.LogoutCheck();
+		userHandles.LogoutCheck(); //Valida que se cerró la sesión
 		driver.close();
 	}
 	
